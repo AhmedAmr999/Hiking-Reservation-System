@@ -12,6 +12,14 @@
     	form{
     		margin: auto;
     	}
+	body{
+		background-size: cover;
+      		height: 100%;
+	  	background-image: url('add.jpg');
+	}
+	label{
+		color:red;
+	}
     </style>
     <title>Add Admin</title>
   </head>
