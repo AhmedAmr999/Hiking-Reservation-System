@@ -40,7 +40,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "webproject";
+$dbname = "webproject (2)";
 
 // Create connection
 
