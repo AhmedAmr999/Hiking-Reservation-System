@@ -66,7 +66,7 @@ session_destroy();
 						
 						echo $e;
 						echo $p;
-						echo"found";           
+						echo"found!!!!";           
 						$_SESSION['id'] = $row['id'];
 						$_SESSION['f'] = $row['First_Name'];
 						$_SESSION['e']= $row['Email'];
@@ -78,10 +78,15 @@ session_destroy();
 								//echo '<script>alert(" Welcome User!")</script>';
 								//echo '<script>window.location="signup.php"</script>';
 								header('Location: HomePage.php');
+
 							
 							}
 							else if($t=="admin")
 							{
+								header('Location: HomePage.php');
+							}
+							else if($t=="auditor")
+							{ 
 								header('Location: HomePage.php');
 							}
 						}

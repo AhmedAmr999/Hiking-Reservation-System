@@ -20,6 +20,7 @@ include("connectionproject.php");
   <?php
   
    $type=$_SESSION['t'];
+   echo $type;
   if(isset($_GET['idd'])){ 
     $id=$_GET['idd'];
     $senderID = $_SESSION['id'];
@@ -144,6 +145,34 @@ include("connectionproject.php");
  }
    if($type=="user")
    {
+     
+     $sqln = "SELECT * FROM data WHERE id='$adminID'";
+     $sqln3 = "SELECT * FROM data WHERE id='$userID'";
+     $sqln2 = "SELECT * FROM messages WHERE sender_id=$adminID or sender_id = $userID ";
+
+     $resultn3 = mysqli_query($conn , $sqln3);
+     $resultn2 = mysqli_query($conn,$sqln2);
+     $resultn = mysqli_query($conn,$sqln);
+     $rown= mysqli_fetch_array($resultn);
+     $rown3= mysqli_fetch_array($resultn3);
+     $adminname = $rown['First_Name'];
+     $username = $rown3['First_Name'];
+     while($rown2 = mysqli_fetch_array($resultn2)) 
+     {
+      if($rown2['sender_id'] == $adminID){echo $adminname . ": ". $rown2['message'] . "&#13;&#10;";}
+      else if($rown2['sender_id'] == $userID){echo $username . ": ". $rown2['message'] . "&#13;&#10;";}
+     }
+
+
+  //   echo $rown['First_Name'].": ";
+  //  while($row0 = mysqli_fetch_array($result0)) {
+    
+  //   echo $row0['message'];
+  //   echo"&#13;&#10;";
+   }
+   if($type=="auditor")
+   {
+     
      $sqln = "SELECT * FROM data WHERE id='$adminID'";
      $sqln3 = "SELECT * FROM data WHERE id='$userID'";
      $sqln2 = "SELECT * FROM messages WHERE sender_id=$adminID or sender_id = $userID ";
@@ -181,10 +210,15 @@ include("connectionproject.php");
   ?>
   
   </textarea>
+<?php 
+if($type == 'auditor'){
+  echo "kosm el admin";
+?>
   <form method="post"> -->
   <input type="text" class="form-control" id="message" name="message" placeholder="Enter your message...">
   <button type="submit" class="btn btn-primary" name="send">Send</button>
   </form>
-  
+  <?php 
+  }?>
  
   

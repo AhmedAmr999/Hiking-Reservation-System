@@ -56,14 +56,7 @@ while($row = mysqli_fetch_array($result)) {
         //    echo $sids[$i];
             $i++;
          }
-         
-         //     if(mysqli_num_rows($result1)>0)
-      //     {
-             
-      //      {
-      //         
-      //    }
-      //   }
+
       }
    }
      $usids = array_unique($sids);
